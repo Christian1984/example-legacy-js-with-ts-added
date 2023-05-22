@@ -1,3 +1,32 @@
+# Notes
+
+Step 1: `yarn create react-app .`
+
+Step 2: `yarn eject` => eslint gives `Parsing error: [BABEL] /Users/.../Documents/dev/learning/js-legacy-with-ts/src/components/AddButton.jsx: Using `babel-preset-react-app`requires that you specify`NODE_ENV`or`BABEL_ENV` environment variables. Valid values are "development", "test", and "production". Instead, received: undefined. (While processing: "/Users/.../Documents/dev/learning/js-legacy-with-ts/node_modules/babel-preset-react-app/index.js")`
+
+Step 3: Change the "eslintConfig" section in the package.json:
+
+```
+{
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "parserOptions": {
+      "babelOptions": {
+          "presets": [
+             ["babel-preset-react-app", false],
+             'babel-preset-react-app/prod'
+          ]
+      }
+    }
+  },
+}
+```
+
+(https://github.com/facebook/create-react-app/issues/12070#issuecomment-1127489727)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
